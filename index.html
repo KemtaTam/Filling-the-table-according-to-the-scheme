@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+	<title>Filling the table according to the scheme</title>
+</head>
+<body>
+	<header><b>Заполните таблицу переходов-выходов по заданной схеме</b></header>
+	<img src="images/sheme.jpg" alt="sheme">
+
+	<form id="form" action="/" method="GET">
+		<div class="body_table">
+			<table>
+				<tbody>
+					<tr class="first_row">
+						<th class="first_col t_1-1" rowspan="2">x<span>0</span>x<span id="ind1">1</span></th>
+						<th colspan="8">DD1 <span id="DD2">DD2</span> DD3</th>
+					</tr>
+					<tr class="states">
+						<th>000</th>
+						<th>001</th>
+						<th>010</th>
+						<th>011</th>
+						<th>100</th>
+						<th>101</th>
+						<th>110</th>
+						<th>111</th>
+					</tr>
+					<tr class="second_row">
+						<th class="first_col input_char">00</th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+					</tr>
+					<tr class="second_row">
+						<th class="first_col input_char">01</th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+					</tr>
+					<tr class="second_row">
+						<th class="first_col input_char">10</th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+					</tr>
+					<tr class="second_row">
+						<th class="first_col input_char">11</th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+						<th ><input class="valueOfTable" type="text" placeholder="000/0" name="input_value" autocomplete="off"></th>
+					</tr>
+					<tr id="delRow">
+						<th id="b1"><button></button></th>
+						<th class="delRow"><button class="bDelCol">X</button></th>
+						<th class="delRow"><button class="bDelCol">X</button></th>
+						<th class="delRow"><button class="bDelCol">X</button></th>
+						<th class="delRow"><button class="bDelCol">X</button></th>
+						<th class="delRow"><button class="bDelCol">X</button></th>
+						<th class="delRow"><button class="bDelCol">X</button></th>
+						<th class="delRow"><button class="bDelCol">X</button></th>
+						<th class="delRow"><button class="bDelCol">X</button></th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="body_end_button">
+			<button class="end_button" type="submit" title="Отправить ответ на платформу">Отправить ответ</button>
+		</div>
+	</form><!-- !!!!!!!! -->
+	<script src="script.js"></script>
+</body>
+</html>
