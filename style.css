@@ -78,14 +78,8 @@ th{
 	transition: 900ms;
   }
 
-span{
-	font-size: 10px;
-	background-color: #808080FF;
-}
-#ind1{
-	font-size: 10px;
-	background-color: #808080FF;
-}
+sub{background-color: #808080FF;}
+#sub{background-color: #808080FF;}
 
 #DD2{
 	margin-left: 20%;
@@ -137,7 +131,7 @@ span{
 	height: 20px;
 }
 .bDelCol:hover{
-	background-color: #631e1ea1;
+	background-color: #c41313a1;
 	transition: 0.2s;
 }
 
@@ -150,4 +144,6 @@ span{
 #l1{background-color: rgba(0, 128, 0, 0.616);}
 #l2{background-color: rgba(128, 119, 0, 0.616);}
 #l3{background-color: rgba(0, 128, 117, 0.616);}
+
+
 
