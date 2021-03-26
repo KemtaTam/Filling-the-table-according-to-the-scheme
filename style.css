@@ -67,7 +67,7 @@ th{
 .second_row :nth-child(n+2){
 	background-color: #E6FFFAFF;
 }
-/*???????????????????????????*/
+
 .second_row :hover{
 	background-color: #ACFFFFFF;
 	transition: all 0.2s linear 0s;
@@ -83,16 +83,6 @@ th{
 	background-color: #E6FFFAFF;
 	transition: 900ms;
   }
-
-sub{background-color: #808080FF;}
-#sub{background-color: #808080FF;}
-
-#DD2{
-	margin-left: 20%;
-	margin-right: 20%;
-	background-color: #D9D9D9FF;
-	font-family: Arial, Helvetica, sans-serif;
-}
 
 .valueOfTable{
 	width: 70px;
