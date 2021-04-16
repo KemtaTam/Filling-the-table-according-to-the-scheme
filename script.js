@@ -11,7 +11,7 @@ let header = document.getElementsByTagName("header")[0];
 //пока так
 let num = getRandomIntInclusive(1, 2);
 let image = document.createElement("img");
-image.setAttribute("src", "images/" + num + "sheme.jpg");
+image.setAttribute("src", "images/" + num + "schema.jpg");
 header.after(image);
 
 tables = {
@@ -21,16 +21,11 @@ tables = {
 		triggers: ['DD1', 'DD2', 'DD3'],
 		states: ['000', '001', '010', '011', '100', '101', '110', '111']
 	},
-	//for testing
 	2: {
-		inputVar: ['X0 ', 'X1', 'X2'],
-		inputChar: ['000', '001', '010', '011', 
-					'100', '101', '110', '111'],
-		triggers: ['DD1', 'DD2', 'DD3', 'DD4'],
-		states: ['0000', '0001', '0010', '0011', 
-				 '0100', '0101', '0110', '0111',
-				 '1000', '1001', '1010', '1011',
-				 '1100', '1101', '1110', '1111']
+		inputVar: ['X0 ', 'X1'],
+		inputChar: ['00', '01', '10', '11'],
+		triggers: ['DD1', 'DD2'],
+		states: ['00', '01', '10', '11',]
 	}
 }; 
 answer = {
@@ -45,17 +40,13 @@ answer = {
 
 	//for testing
 	2: {
-		ans: ['111/1', '', '000/0', '', '', '', '', '', '', '', '', '', '', '', '', '',
-			  '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
-			  '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
-			  '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
-			  '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
-			  '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
-			  '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
-			  '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
+		ans: ['10/0', '', '10/0', '10/0',
+			  '11/0', '', '11/0', '10/0',
+			  '10/0', '', '00/1', '00/0',
+			  '11/0', '', '11/0', '10/0'
 			],
-		delState: ['2', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'],
-		nondelState: ['1', '3']		
+		delState: ['2'],
+		nondelState: ['1', '3', '4']		
 	}
 
 }; //Из начального состояния недостижимы состояния: 001, 100, 110
@@ -90,8 +81,8 @@ function buildTable()
 		let th2 = document.createElement("th");
 		for(let i=0; i<tables[num].triggers.length; i++){
 			let dd = document.createElement("class");
-			dd.style.marginLeft = "10%";
-			dd.style.marginRight = "10%";
+			dd.style.marginLeft = "3%";
+			dd.style.marginRight = "3%";
 			dd.style.backgroundColor = "inherit";
 			dd.textContent = tables[num].triggers[i];
 			th2.appendChild(dd);
@@ -130,7 +121,11 @@ function buildTable()
 
 				input_value.setAttribute('class', 'valueOfTable');
 				input_value.type = "text";
-				input_value.placeholder = '000/0';
+				if(num == 1){
+					input_value.placeholder = '000/0';;
+				} else if(num == 2){
+					input_value.placeholder = '00/0';;
+				}
 				input_value.name = "input_value";
 				input_value.autocomplete="off";
 
@@ -163,7 +158,12 @@ function buildTable()
 }
 buildTable();
 
-$('.valueOfTable').mask('999/9', {placeholder: "_"});
+//маска
+if(num == 1){
+	$('.valueOfTable').mask('99/9', {placeholder: "_"});
+} else if(num == 2){
+	$('.valueOfTable').mask('99/9', {placeholder: "_"});
+}
 
 //событие нажата кнопка "отправить ответ"
 let tableForm = document.getElementById("form");
