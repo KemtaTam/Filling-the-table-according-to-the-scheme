@@ -9,20 +9,29 @@ let tbody = document.getElementsByTagName("tbody")[0];
 let header = document.getElementsByTagName("header")[0];
 
 //пока так
-let num = getRandomIntInclusive(1, 2);
+let num = getRandomIntInclusive(1, 3);
 let image = document.createElement("img");
 image.setAttribute("src", "images/" + num + "schema.jpg");
+if(num==3){
+	image.style.width = "700px";
+}
 header.after(image);
 
 tables = {
 	1: {
-		inputVar: ['X0 ', 'X1'],
+		inputVar: ['x0 ', 'x1'],
 		inputChar: ['00', '01', '10', '11'],
 		triggers: ['DD1', 'DD2', 'DD3'],
 		states: ['000', '001', '010', '011', '100', '101', '110', '111']
 	},
 	2: {
-		inputVar: ['X0 ', 'X1'],
+		inputVar: ['x0 ', 'x1'],
+		inputChar: ['00', '01', '10', '11'],
+		triggers: ['DD1', 'DD2'],
+		states: ['00', '01', '10', '11',]
+	},
+	3: {
+		inputVar: ['x0 ', 'x1'],
 		inputChar: ['00', '01', '10', '11'],
 		triggers: ['DD1', 'DD2'],
 		states: ['00', '01', '10', '11',]
@@ -30,6 +39,7 @@ tables = {
 }; 
 answer = {
 	1: {
+		//из задания на взаимное оценивание
 		ans: ['111/1', '', '111/1', '101/0', '', '011/1', '', '011/1',
 			  '111/1', '', '111/1', '101/0', '', '011/1', '', '011/1',
 			  '010/1', '', '010/1', '010/1', '', '010/1', '', '010/1',
@@ -38,7 +48,6 @@ answer = {
 		nondelState: ['1', '3', '4', '6', '8'],
 	},
 
-	//for testing
 	2: {
 		ans: ['10/0', '', '10/0', '10/0',
 			  '11/0', '', '11/0', '10/0',
@@ -47,6 +56,15 @@ answer = {
 			],
 		delState: ['2'],
 		nondelState: ['1', '3', '4']		
+	},
+	3: {
+		ans: ['00/1', '10/0', '10/0', '',
+			  '01/1', '10/0', '10/0', '',
+			  '10/0', '10/0', '10/0', '',
+			  '10/0', '10/0', '10/0', ''
+			],
+		delState: ['4'],
+		nondelState: ['1', '2', '3']
 	}
 
 }; //Из начального состояния недостижимы состояния: 001, 100, 110
@@ -66,12 +84,13 @@ function buildTable()
 			let x = document.createElement('class');
 			x.textContent = tables[num].inputVar[i][0];
 			x.style.backgroundColor = "inherit";
+			x.style.fontSize = '18px';
 			th1.appendChild(x);
 			//индекс
 			let ind = document.createElement('class');
 			ind.textContent = tables[num].inputVar[i][1];
 			ind.style.backgroundColor = "inherit"
-			ind.style.fontSize = '12px';
+			ind.style.fontSize = '11px';
 			th1.appendChild(ind);
 		}
 		th1.setAttribute("rowspan", 2);
@@ -123,7 +142,7 @@ function buildTable()
 				input_value.type = "text";
 				if(num == 1){
 					input_value.placeholder = '000/0';;
-				} else if(num == 2){
+				} else if(num == 2 || num == 3){
 					input_value.placeholder = '00/0';;
 				}
 				input_value.name = "input_value";
@@ -160,10 +179,16 @@ buildTable();
 
 //маска
 if(num == 1){
-	$('.valueOfTable').mask('99/9', {placeholder: "_"});
-} else if(num == 2){
+	$('.valueOfTable').mask('999/9', {placeholder: "_"});
+} else if(num == 2 || num == 3){
 	$('.valueOfTable').mask('99/9', {placeholder: "_"});
 }
+
+let popup1 = document.getElementsByClassName("pop-up1")[0];
+let popup2 = document.getElementsByClassName("pop-up2")[0];
+let end_button = document.getElementsByClassName("end_button")[0];
+let bOk1 = document.getElementById("bOk1");
+let bOk2 = document.getElementById("bOk2");
 
 //событие нажата кнопка "отправить ответ"
 let tableForm = document.getElementById("form");
@@ -172,10 +197,12 @@ function retrieveInputValue(event)
 	event.preventDefault(); //отправлять на сервер не нужно
 
 	//сравниваю два массива
-	if (isEqual(answer[num].ans, getUserAnswer()) && checkDelCol()) alert("Correct answer");
-	else alert("Incorrect answer! Try it again.");
+	if (isEqual(answer[num].ans, getUserAnswer()) && checkDelCol()) popup1.style.display = "block";
+	else popup2.style.display = "block";;
 }
 tableForm.addEventListener('submit', retrieveInputValue);
+bOk1.onclick = function () { popup1.style.display = "none"; }
+bOk2.onclick = function () { popup2.style.display = "none"; }
 
 //проверка удалены ли ненужные столбцы
 function checkDelCol()
@@ -199,6 +226,7 @@ function delCol()
 	{
 		delRow.children[i+1].addEventListener('click', () => {
 			for(let j=0; j<tbody.children.length-2; j++){
+				tbody.children[j+2].children[i+1].firstElementChild.value = "";
 				tbody.children[j+2].children[i+1].style.visibility = "hidden";
 			}
 			tbody.children[1].children[i].style.visibility = "hidden";
