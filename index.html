@@ -14,7 +14,7 @@
 </head>
 <body>
 	<header><b>Заполните таблицу переходов-выходов по заданной схеме, удалите недостижимые состояния</b></header>
-	 <!-- <img src="images/1sheme.jpg" alt="sheme">  -->
+	 <!-- <img src="images/1sheme.jpg" alt="sсhema">  -->
 
 	<form id="form" action="/" method="GET">
 		<div class="body_table">
@@ -30,16 +30,21 @@
 		</div>
 	</form>
 
-	<div class="next_sim">Перейти к следующему тренажеру:</div>
-	<div class="links">
-		<a href="https://kemtatam.github.io/Filling-in-the-transition-exit-table" 
-			class="link" id="l1" title="Заполнение таблицы по графу">1</a>
-		<a href="https://kemtatam.github.io/Designation-an-Output-Sequence" 
-			class="link" id="l2" title="Указание выходной последовательности">2</a>
-		<a href="https://kemtatam.github.io/Filling-the-table-according-to-the-scheme" 
-			class="link" id="l3" title="Заполнение таблицы по схеме">3</a>
-		<a href="https://kemtatam.github.io/Specifying-a-function-according-to-the-diagram" 
-			class="link" id="l4" title="Указание значения функции по схеме">4</a>
+	<div class="pop-up1">
+		<div class="body_pop-up">
+			<div class="text1">
+				<h1 class="modals_header">Верно!</h1><br/>
+				<div class="bOk"><button id="bOk1" class="butOk" type="button">ОК</button></div>
+			</div>
+		</div>
+	</div>
+	<div class="pop-up2">
+		<div class="body_pop-up">
+			<div class="text2">
+				<h1 class="modals_header">Неверно! Попробуйте еще раз.</h1><br/>
+				<div class="bOk"><button id="bOk2" class="butOk" type="button">ОК</button></div>
+			</div>
+		</div>
 	</div>
 	
 	<script src="script.js"></script>
