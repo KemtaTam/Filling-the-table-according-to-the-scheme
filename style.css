@@ -130,24 +130,6 @@ th{
 	transition: 0.2s;
 }
 
-.next_sim{
-	display: flex;
-	justify-content: center;
-	margin-top: 30px;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 12px;
-}
-.links{
-	display: flex;
-	justify-content: center;
-	margin-top: 5px;
-}
-.link{padding: 10px;}
-#l1{background-color: rgba(0, 128, 0, 0.616);}
-#l2{background-color: rgba(128, 119, 0, 0.616);}
-#l3{background-color: rgba(0, 128, 117, 0.616);}
-#l4{background-color: rgba(128, 0, 32, 0.616);}
-
 @media screen and (max-width: 620px){
 	img{
 		width: 350px;
@@ -163,4 +145,67 @@ th{
 		width: min-content;
 		font-size: 12px;
 	}
+}
+
+.pop-up1{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(255, 255, 255, 0.150);
+	display: none;
+}
+.pop-up2{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(255, 255, 255, 0.150);
+	display: none;
+}
+
+.body_pop-up{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    padding: 20px;
+    min-width: 250px;
+    transition: all 0.8s ease 0s;
+    background-color: rgba(255, 255, 255, 0.150);
+}
+
+.text1{
+    background: linear-gradient(to bottom, rgba(0, 251, 0, 0.616), #008D00FF);
+    width: 450px;
+    padding: 20px;
+}
+.text2{
+    background: linear-gradient(to bottom, rgba(251, 17, 0, 0.616), rgb(141, 0, 0));
+    width: 500px;
+    padding: 20px;
+}
+
+.modals_header{
+    display: flex;
+    justify-content: center;
+	background-color: inherit;
+}
+
+.bOk{
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	background-color: inherit;
+	height: 60px;
+}
+.butOk{
+	width: 70px;
+	height: 35px;
+	border-radius: 5px;
+	background-color: #8AB4F8;
+	font-weight: 550;
 }
