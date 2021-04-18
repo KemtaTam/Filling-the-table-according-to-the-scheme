@@ -7,11 +7,11 @@ document.querySelectorAll('input').forEach(input => {
 
 let tbody = document.getElementsByTagName("tbody")[0];
 let header = document.getElementsByTagName("header")[0];
+let body = document.getElementsByTagName("body")[0];
 
-//пока так
-let num = getRandomIntInclusive(1, 3);
+let num = getRandomIntInclusive(2, 3);
 let image = document.createElement("img");
-image.setAttribute("src", "images/" + num + "schema.jpg");
+image.setAttribute("src", "images/" + num + "schema.svg");
 if(num==3){
 	image.style.width = "700px";
 }
@@ -38,15 +38,14 @@ tables = {
 	}
 }; 
 answer = {
-	1: {
-		//из задания на взаимное оценивание
+	/*1: {
 		ans: ['111/1', '', '111/1', '101/0', '', '011/1', '', '011/1',
 			  '111/1', '', '111/1', '101/0', '', '011/1', '', '011/1',
 			  '010/1', '', '010/1', '010/1', '', '010/1', '', '010/1',
 			  '011/1', '', '011/1', '011/1', '', '011/1', '', '011/1'],
 		delState: ['2', '5', '7'],
 		nondelState: ['1', '3', '4', '6', '8'],
-	},
+	},*/
 
 	2: {
 		ans: ['10/0', '', '10/0', '10/0',
@@ -67,7 +66,7 @@ answer = {
 		nondelState: ['1', '2', '3']
 	}
 
-}; //Из начального состояния недостижимы состояния: 001, 100, 110
+}; 
 
 function buildTable()
 {
