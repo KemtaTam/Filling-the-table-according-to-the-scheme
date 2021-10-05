@@ -13,38 +13,50 @@
 	<title>Заполнение таблицы по последовательной схеме</title>
 </head>
 <body>
-	<header><b>Заполните таблицу переходов-выходов автомата по заданной схеме, удалите недостижимые состояния</b></header>
-	 <!-- <img src="images/1sheme.jpg" alt="sсhema">  -->
-
-	<form id="form" action="/" method="GET">
-		<div class="body_table">
-			<table>
-				<tbody>
-					<!-- Здесь сформируется таблица -->
-				</tbody>
-			</table>
-		</div>
-
-		<div class="body_end_button">
-			<button class="end_button" type="submit" title="Отправить ответ на платформу">Отправить ответ</button>
-		</div>
-	</form>
-
-	<div class="pop-up1">
-		<div class="body_pop-up">
-			<div class="text1">
-				<h1 class="modals_header">Верно!</h1><br/>
-				<div class="bOk"><button id="bOk1" class="butOk" type="button">ОК</button></div>
+	<div class="inner">
+		<header><b>Заполните таблицу переходов-выходов автомата по заданной схеме, удалите недостижимые состояния</b></header>
+	
+		<div class="wrapper">
+			<canvas class="canvas" width="500px" height="270px"></canvas>
+			<div class="wrapper__el">
+				<img class="draw-img" src="images/draw.png" alt="">
+				<img class="clear-img" src="images/clear.png" alt="">
+				<button class="clearAll-btn">Очистить</button>
 			</div>
 		</div>
-	</div>
-	<div class="pop-up2">
-		<div class="body_pop-up">
-			<div class="text2">
-				<h1 class="modals_header">Неверно! Попробуйте еще раз.</h1><br/>
-				<div class="bOk"><button id="bOk2" class="butOk" type="button">ОК</button></div>
+
+
+		<form id="form" action="/" method="GET">
+			<div class="body_table">
+				<table>
+					<tbody>
+						<!-- Здесь сформируется таблица -->
+					</tbody>
+				</table>
+			</div>
+
+			<div class="body_end_button">
+				<button class="end_button" type="submit" title="Отправить ответ на платформу">Отправить ответ</button>
+			</div>
+		</form>
+
+		<div class="pop-up1">
+			<div class="body_pop-up">
+				<div class="text1">
+					<h1 class="modals_header">Верно!</h1><br/>
+					<div class="bOk"><button id="bOk1" class="butOk" type="button">ОК</button></div>
+				</div>
 			</div>
 		</div>
+		<div class="pop-up2">
+			<div class="body_pop-up">
+				<div class="text2">
+					<h1 class="modals_header">Неверно! Попробуйте еще раз.</h1><br/>
+					<div class="bOk"><button id="bOk2" class="butOk" type="button">ОК</button></div>
+				</div>
+			</div>
+		</div>
+
 	</div>
 	
 	<script src="script.js"></script>
