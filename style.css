@@ -8,6 +8,11 @@ body{
 	min-width: 345px;
 }
 
+.inner{
+	width: 800px;
+	margin: 0 auto;
+}
+
 header{
 	font-size: 17px;
 	display: flex;
@@ -20,12 +25,36 @@ header{
 	width: 600px;
 }
 
-img{
+.wrapper{
 	display: flex;
-	margin: 20px auto;
-	width: 500px;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+}
+.wrapper__el{
+	display: flex;
+	flex-direction: column;
+	margin-left: 10px;
+	align-items: center;
+}
+.draw-img, .clear-img{
+	cursor: pointer;
+	margin-bottom: 5px;
+}
+.clearAll-btn{
+	border: 1px solid rgba(0, 0, 0, 0.767);
+	border-radius: 2px;
+	background-color: #0000002e;
+	color: rgba(0, 0, 0, 0.76);
+	font-size: 9px;
+	padding: 2px;
+	cursor: pointer;
+}
+.canvas{
 	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
-	max-width: 99%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-left: 42px;
 }
 
 form{
@@ -38,15 +67,12 @@ form{
 	justify-content: center;
 	align-items: center;
 }
+
 table{
-	border: 1px solid black;
 	width: max-content;
 	border-collapse: collapse;
 }
 
-tr{
-	border: 1px solid black;
-}
 th{
 	border: 1px solid black;
 }
@@ -118,6 +144,8 @@ th{
 
 #b1{
 	visibility: hidden;
+	outline: none;
+	border: 0;
 }
 .bDelCol{
 	width: 70px;
@@ -134,7 +162,7 @@ th{
 }
 
 @media screen and (max-width: 620px){
-	/*.bDelCol{
+/* 	.bDelCol{
 		width: 35px;
 	}
 	.valueOfTable{
@@ -144,7 +172,7 @@ th{
 	table{
 		width: min-content;
 		font-size: 12px;
-	}*/
+	} */
 	header{
 		width: auto;
 		font-size: 14px;
