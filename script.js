@@ -11,6 +11,56 @@ let body = document.getElementsByTagName("body")[0];
 let canvas = document.getElementsByTagName('canvas')[0];
 let ctx = canvas.getContext('2d');
 
+tables = {	
+	1: {
+		inputVar: ['x0 ', 'x1'],
+		inputChar: ['00', '01', '10', '11'],
+		triggers: ['DD1', 'DD2', 'DD3'],
+		states: ['000', '001', '010', '011', '100', '101', '110', '111']
+	},
+	2: {
+		inputVar: ['x0 ', 'x1'],
+		inputChar: ['00', '01', '10', '11'],
+		triggers: ['DD1', 'DD2'],
+		states: ['00', '01', '10', '11',]
+	},
+	3: {
+		inputVar: ['x0 ', 'x1'],
+		inputChar: ['00', '01', '10', '11'],
+		triggers: ['DD1', 'DD2'],
+		states: ['00', '01', '10', '11',]
+	}
+}; 
+answer = { 
+	1: {
+		ans: ['111/1', '', '111/1', '101/0', '', '011/1', '', '011/1',
+			  '111/1', '', '111/1', '101/0', '', '011/1', '', '011/1',
+			  '010/1', '', '010/1', '010/1', '', '010/1', '', '010/1',
+			  '011/1', '', '011/1', '011/1', '', '011/1', '', '011/1'],
+		delState: ['2', '5', '7'],
+		nondelState: ['1', '3', '4', '6', '8'],
+	},
+
+	2: {
+		ans: ['10/0', '', '10/0', '10/0',
+			  '11/0', '', '11/0', '10/0',
+			  '10/0', '', '00/1', '00/0',
+			  '11/0', '', '11/0', '10/0'
+			],
+		delState: ['2'],
+		nondelState: ['1', '3', '4']		
+	},
+	3: {
+		ans: ['00/1', '10/0', '10/0', '',
+			  '01/1', '10/0', '10/0', '',
+			  '10/0', '10/0', '10/0', '',
+			  '10/0', '10/0', '10/0', ''
+			],
+		delState: ['4'],
+		nondelState: ['1', '2', '3']
+	}
+}; 
+
 //генератор задания
 let num = getRandomIntInclusive(2, 3);
 canvas.style.backgroundImage = 'url(images/' + num + 'schema.svg)';
@@ -85,56 +135,6 @@ clear.onclick = function(){
 clearAll.onclick = function(){
 	ctx.clearRect(0,0, 1000,1000);
 }
-
-tables = {	
-	1: {
-		inputVar: ['x0 ', 'x1'],
-		inputChar: ['00', '01', '10', '11'],
-		triggers: ['DD1', 'DD2', 'DD3'],
-		states: ['000', '001', '010', '011', '100', '101', '110', '111']
-	},
-	2: {
-		inputVar: ['x0 ', 'x1'],
-		inputChar: ['00', '01', '10', '11'],
-		triggers: ['DD1', 'DD2'],
-		states: ['00', '01', '10', '11',]
-	},
-	3: {
-		inputVar: ['x0 ', 'x1'],
-		inputChar: ['00', '01', '10', '11'],
-		triggers: ['DD1', 'DD2'],
-		states: ['00', '01', '10', '11',]
-	}
-}; 
-answer = { 
-	1: {
-		ans: ['111/1', '', '111/1', '101/0', '', '011/1', '', '011/1',
-			  '111/1', '', '111/1', '101/0', '', '011/1', '', '011/1',
-			  '010/1', '', '010/1', '010/1', '', '010/1', '', '010/1',
-			  '011/1', '', '011/1', '011/1', '', '011/1', '', '011/1'],
-		delState: ['2', '5', '7'],
-		nondelState: ['1', '3', '4', '6', '8'],
-	},
-
-	2: {
-		ans: ['10/0', '', '10/0', '10/0',
-			  '11/0', '', '11/0', '10/0',
-			  '10/0', '', '00/1', '00/0',
-			  '11/0', '', '11/0', '10/0'
-			],
-		delState: ['2'],
-		nondelState: ['1', '3', '4']		
-	},
-	3: {
-		ans: ['00/1', '10/0', '10/0', '',
-			  '01/1', '10/0', '10/0', '',
-			  '10/0', '10/0', '10/0', '',
-			  '10/0', '10/0', '10/0', ''
-			],
-		delState: ['4'],
-		nondelState: ['1', '2', '3']
-	}
-}; 
 
 function buildTable()
 {
@@ -324,3 +324,41 @@ function getRandomIntInclusive(min, max) {
 	max = Math.floor(max);
 	return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
   }
+
+//переход по таблице с помощью стрелок
+let valueOfTable = document.getElementsByClassName('valueOfTable');
+for(let i=0; i<valueOfTable.length; i++){
+	valueOfTable[i].onkeydown = changeFocus;
+}
+function changeFocus(e) 
+{
+	let text = e.code 
+	curFocus = document.activeElement;
+
+	for(let i=0; i<valueOfTable.length; i++)
+	{
+		if(valueOfTable[i] == curFocus)
+		{
+			if(text == 'ArrowRight'){
+				if(i != valueOfTable.length-1) valueOfTable[i+1].focus();
+				else(valueOfTable[0].focus());
+				break;
+			}
+			else if(text == 'ArrowLeft'){
+				if(i != 0) valueOfTable[i-1].focus();
+				else(valueOfTable[valueOfTable.length-1].focus());
+				break;
+			}
+			else if(text == 'ArrowDown'){
+				if(i < valueOfTable.length-tables[num].states.length) 
+					valueOfTable[i+tables[num].states.length].focus();
+				break;
+			}
+			else if(text == 'ArrowUp'){
+				if(i > tables[num].states.length-1) 
+					valueOfTable[i-tables[num].states.length].focus();
+				break;
+			}
+		}
+	}
+}
